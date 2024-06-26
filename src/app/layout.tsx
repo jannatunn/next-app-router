@@ -22,9 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar></Navbar>
+        {/* <Navbar></Navbar>
         <h1>Layout <span className="px-2 py-0.5 bg-blue-300">{state}</span></h1>
-        <button onClick={() => setState(state + 1)} className='ml-5 px-3 py-1 rounded text-white bg-red-500'>Click</button>
+        <button onClick={() => setState(state + 1)} className='ml-5 px-3 py-1 rounded text-white bg-red-500'>Click</button> */}
 
         {children}
         </body>

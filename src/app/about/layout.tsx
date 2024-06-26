@@ -1,3 +1,4 @@
+
 export default function AboutLayout({
   children,
 }: {
@@ -5,7 +6,7 @@ export default function AboutLayout({
 }) {
   return (
       <>
-        <nav className="fixed right-0 top-13 z-10 h-screen w-60 bg-gray-800">
+        <nav className="fixed right-0 top-[63px] z-10 h-screen w-60 bg-gray-800">
             <ul className="p-5 text-white">
               <li>Home</li>
               <li>About</li>
