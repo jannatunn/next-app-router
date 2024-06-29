@@ -1,42 +1,26 @@
 "use client"
 import Link from "next/link";
-import { useRef } from "react";
+
 
 export default function LoginPage() {
-  const formRef = useRef(null);
   const handleLogin = (e: any) => {
+    console.log("ini adalah element", e)
     e.preventDefault();
-    console.log("Form Reference: ", formRef.current);
-    console.log("formRef", formRef)
-    if (formRef.current) {
-      const formData = new FormData(formRef.current);
-      const email = formData.get("email");
-      const password = formData.get("password");
-
-      fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password
-        })
+    fetch("/api/auth/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email: e.currentTarget.email.value,
+        password: e.currentTarget.password.value
       })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      });
-    }
+    })
   }
-
   return (
     <div className="flex flex-col justify-center px-6 py-12 lg:px-8 h-screen">
       <div className="p-5 rounded-md mx-auto w-full max-w-sm border border-gray-400 bg-gray-300 shadow-lg">
         <h2 className="mb-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Form Login
         </h2>
-        <form ref={formRef} className="space-y-6" onSubmit={handleLogin}>
+        <form className="space-y-6" onSubmit={(e) => handleLogin(e)}>
           <div>
             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
               Email address
