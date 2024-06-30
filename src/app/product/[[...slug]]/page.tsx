@@ -2,7 +2,13 @@ type ProductPageProps = { params: { slug: string[] } }
 
 async function getData() {
   // const res = await fetch("https://fakestoreapi.com/products")
-  const res = await fetch("http://localhost:3000/api/product")
+  const res = await fetch("http://localhost:3000/api/product", {
+    cache: "force-cache",
+    next : {
+      tags:  ["products"],
+      // revalidate: 1,
+    }
+  })
 
   if(!res.ok){
     throw new Error("Faild To Fetch Data")
@@ -14,7 +20,6 @@ async function getData() {
 export default async function DetailProductPage( props: ProductPageProps ) {
   const { params } = props;
   const products = await getData()
-  console.log("ini adalah products product dari produt page", products);
   
 
   return (

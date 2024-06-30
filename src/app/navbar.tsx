@@ -21,7 +21,7 @@ export default function Navbar() {
                     <li className={`${ pathname === "/about/profile" ? "text-blue-300" : "text-white"}`}>Profile</li>
                   </Link>
                 </ul>
-                <button onClick={() => router.push("/login")} className="px-3 text-sm rounded font-medium hover:bg-slate-300 text-base bg-white">Login</button>
+                <button onClick={() => router.push("/login")} className="px-3 text-sm rounded font-medium hover:bg-slate-300 bg-white">Login</button>
               </div>
             </nav>
           </>

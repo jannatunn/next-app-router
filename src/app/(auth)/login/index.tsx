@@ -4,7 +4,6 @@ import Link from "next/link";
 
 export default function LoginPage() {
   const handleLogin = (e: any) => {
-    console.log("ini adalah element", e)
     e.preventDefault();
     fetch("/api/auth/login", {
       method: "POST",
