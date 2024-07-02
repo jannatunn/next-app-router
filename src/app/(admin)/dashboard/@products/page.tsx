@@ -22,8 +22,8 @@ export default function AdminProductPage() {
   };
 
   return (
-    <div className="flex justify-center items-center">
-      <h1>Ini Statusnya: {status}</h1>
+    <div className="w-3/6 h-96 bg-gray-300 rounded flex justify-center items-center">
+      <h1>{status}</h1>
       <button onClick={() => revalidate()} className="rounded mx-auto my-5 px-3 py-1 bg-blue-400">Revalidate</button>
     </div>
   )
