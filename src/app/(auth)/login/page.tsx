@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 
@@ -36,6 +37,7 @@ export default function LoginPage() {
         <h2 className="mb-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Form Login
         </h2>
+        <Image src="/next.svg" width={200} height={200} alt="gamabr nextJs"/>
         <form ref={formRef} className="space-y-6" onSubmit={handleLogin}>
           <div>
             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
