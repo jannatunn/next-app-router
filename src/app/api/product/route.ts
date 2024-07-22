@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
   const id = searchParams.get("id")
   if (id){
     const productDetail = await retrieveDataId("next-app-router", id)
-    console.log("ini product detail =>", productDetail);
+    console.log("ini product detail dari api product =>", productDetail);
     
     if(productDetail){
       return NextResponse.json({

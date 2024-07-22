@@ -1,34 +1,55 @@
 "use client"
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useRef } from "react";
 
 export default function LoginPage() {
-  const formRef = useRef(null);
-  const handleLogin = (e: any) => {
-    e.preventDefault();
-    console.log("Form Reference: ", formRef.current);
-    console.log("formRef", formRef)
-    if (formRef.current) {
-      const formData = new FormData(formRef.current);
-      const email = formData.get("email");
-      const password = formData.get("password");
 
-      fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
+  const { push } = useRouter();
+  const formRef = useRef(null);
+  
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
+
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email: e.target.email.value,
+        password: e.target.password.value,
+        callbackUrl: "/dashboard"
       });
+
+      if(!res.error) {
+        push("/dashboard")
+      }else {
+        console.log(res.error)
+      }
+    } catch (err) {
+      console.log(err);
+      
     }
+
+    // if (formRef.current) {
+    //   const formData = new FormData(formRef.current);
+    //   const email = formData.get("email");
+    //   const password = formData.get("password");
+    //   fetch("/api/auth/login", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
+    //       email: email,
+    //       password: password
+    //     })
+    //   })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log(data);
+    //   });
+    // }
   }
 
   return (

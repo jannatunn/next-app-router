@@ -6,6 +6,7 @@ import { Inter } from 'next/font/google'
 import Navbar from './navbar'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { SessionProvider } from 'next-auth/react'
 
 const inter = Inter({ subsets: ['latin'] })
   const disableNavbar = ["/login", "/register"]
@@ -20,17 +21,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const [state, setState] = useState(0);
   const pathname = usePathname();
 
   return (
     <html lang="en">
       <body className={`${inter.className} bg-slate-100`}>
-        {!disableNavbar.includes(pathname) && <Navbar />}
-        {/* <h1>Layout <span className="px-2 py-0.5 bg-blue-300">{state}</span></h1>
-        <button onClick={() => setState(state + 1)} className='ml-5 px-3 py-1 rounded text-white bg-red-500'>Click</button> */}
-
-        {children}
+        <SessionProvider>
+          {!disableNavbar.includes(pathname) && <Navbar />}
+          {children}
+        </SessionProvider>
         </body>
     </html>
   )

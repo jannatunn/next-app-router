@@ -6,6 +6,9 @@ type ProductPageProps = { params: { slug: string[] } }
 export default async function DetailProductPage( props: ProductPageProps ) {
   const { params } = props;
   const products = await getData("http://localhost:3000/api/product")
+
+  console.log("ini adalah Product di halaman Product ==>", products);
+  
   
 
   return (
@@ -34,6 +37,6 @@ export default async function DetailProductPage( props: ProductPageProps ) {
         )}</h2>
       </div>
     </div>
- 
+
   )
 }

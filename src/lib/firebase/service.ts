@@ -10,8 +10,8 @@ export async function retrieveData(collectionName: string) {
     ...doc.data(),
   }));
 
-  console.log("ini adalah snapshot =>>", snapshot.docs);
-  console.log("ini adalah data =>>", data);
+  console.log("ini adalah snapshot dervices lib =>>", snapshot.docs);
+  console.log("ini adalah data darai dervices lib =>>", data);
   
 
   return data;
